@@ -5,31 +5,13 @@ namespace project;
 
 class Multiples
 {
-    private array $allNums;
-
-    public function __construct()
-    {
-        $this->allNums = [];
-    }
-
-    public function multiplier(int $input){
-
-        // create array from user input
-        for($i = 1; $i < $input; $i++){
-            $this->allNums[] += $i;
-        }
-        //var_dump($this->allNums);
-
-        // add up values in allNums that are multiples of 3 or 5
+    public function multiplier(int $input):int{
         $sum = 0;
-        foreach($this->allNums as $val){
-            if($val % 3 == 0 || $val % 5 == 0){
-                $sum += $val;
+        for($i = 1; $i < $input; $i++){
+            if($i % 3 == 0 || $i % 5 == 0){
+                $sum += $i;
             }
         }
-
         return $sum;
-
     }
-
 }

@@ -6,4 +6,4 @@ Find the sum of all the multiples of 3 or 5 below 1000*/
 
     $init = new project\multiples;
 
-    echo $init->multiplier(10);
+    echo $init->multiplier(1000);
