@@ -9,55 +9,25 @@ Find the largest palindrome made from the product of two 3-digit numbers.*/
 // decrease 2nd to 998 and leave first 998
 // repeat till found
 
-function checkPalindrome($first, $second)
+function checkPalindrome():int
 {
-    $sum = strval($first * $second);
-    $len = strlen($sum) - 1;
-    $n = 0;
-
-    while($first > 99)
+    $pal = 0;
+    $first = 100;
+    while($first <= 999)
     {
-
-        while($n == 0)
+        $second = 100;
+        $sum = strval($first * $second);
+        while($second <= 999)
         {
-            if($sum == strrev($sum))
+            if($sum == strrev($sum) && $sum > $pal)
             {
-                return $sum;
+                $pal = $first * $second;
             }
-            $first--;
+            $second++;
             $sum = strval($first * $second);
-            $n = 1;
         }
-
-        while($n == 1)
-        {
-            if($sum == strrev($sum))
-            {
-                return $sum;
-            }
-            $second--;
-            $sum = strval($first * $second);
-            $n = 0;
-        }
-
+        $first++;
     }
-
+    return $pal;
 }
-/*$sum = '901109';
-$len = strlen($sum) - 1;
-
-for($i = 0; $i < $len; $i++)
-{
-    if($sum[$i] == $sum[$len])
-    {
-        if($sum[$i + 1] == $sum[$len - 1])
-        {
-            if ($sum[$i + 2] == $sum[$len - 2])
-            {
-                echo $sum;
-            }
-        }
-    }
-}*/
-
-var_dump(checkPalindrome(999, 999));
+var_dump(checkPalindrome());
