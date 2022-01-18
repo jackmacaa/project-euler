@@ -9,13 +9,13 @@ Find the largest palindrome made from the product of two 3-digit numbers.*/
 // decrease 2nd to 998 and leave first 998
 // repeat till found
 
-function checkPalindrome():int
+function checkPalindrome($input1, $input2):int
 {
     $pal = 0;
-    $first = 100;
+    $first = $input1;
     while($first <= 999)
     {
-        $second = 100;
+        $second = $input2;
         $sum = strval($first * $second);
         while($second <= 999)
         {
@@ -30,4 +30,4 @@ function checkPalindrome():int
     }
     return $pal;
 }
-var_dump(checkPalindrome());
+var_dump(checkPalindrome(100, 100));
