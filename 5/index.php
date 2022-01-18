@@ -10,18 +10,25 @@ function divide()
 
    while($count < 20)
     {
-        for($i = 1; $i <= 20; $i++)
+        for($i = 20; $i > 1; $i--)
         {
-            //echo $count . " ";
-            //echo ($answer % $i) . " ";
-            if(($answer % $i) == 0)
+            if(($answer % 19) == 0 && ($answer % 17) == 0 && ($answer % 13) == 0 && ($answer % 11) == 0 )
             {
-                $count++;
+                if(($answer % $i) == 0)
+                {
+                    $count++;
+                }
+                else
+                {
+                    $count = 0;
+                    $answer++;
+                }
             }
-            else{
-                $count = 0;
+            else
+            {
                 $answer++;
             }
+
         }
     }
     echo $answer . " ";
