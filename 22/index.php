@@ -47,14 +47,18 @@ function fileFormatter(String $filename): array
         $fileString[$key] = trim($word);
     }
 
+    natsort($fileString);
+
     return $fileString;
 }
 
 $names = fileFormatter('names.txt');
+$count = 1;
 
 foreach($names as $key => $name)
 {
     $nameScore = 0;
+
     for($i = 0; $i < strlen($name); $i++)
     {
         foreach($lettersValue as $letter => $value)
@@ -65,7 +69,8 @@ foreach($names as $key => $name)
         }
     }
 
-    $score += $nameScore * ($key + 1);
+    $score += ($nameScore * $count);
+    $count++;
 }
 
 echo $score;
