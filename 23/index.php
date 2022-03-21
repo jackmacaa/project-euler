@@ -6,6 +6,18 @@
 //As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16
 $limit = 28123;
 
+function createArray(int $num): array
+{
+    $arr = [];
+
+    for($i = 0; $i < $num; $i++)
+    {
+        $arr[] = $i;
+    }
+
+    return $arr;
+}
+
 function abundantNums(int $num): array
 {
     $lim = $num;
@@ -31,8 +43,37 @@ function abundantNums(int $num): array
             $abundant[] = $i;
         }
     }
-    var_dump($abundant);
-    die();
+
+   return $abundant;
 }
 
-abundantNums($limit);
+$abun = abundantNums($limit);
+
+$arr = createArray($limit);
+
+function nonAbundant(array $abun, array $arr, int $limit): array
+{
+
+    for($i = 0; $i < count($abun); $i++)
+    {
+        for($j = 0; $j < $limit; $j++)
+        {
+            if($abun[$i] + $abun[$j] < $limit)
+            {
+                $arr[$abun[$i] + $abun[$j]] = 0;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    return $arr;
+}
+
+$new = nonAbundant($abun, $arr, $limit);
+
+echo array_sum($new);
+
+
