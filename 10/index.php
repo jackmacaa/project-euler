@@ -4,30 +4,53 @@
 //
 //Find the sum of all the primes below two million
 
-function efficientPrime($input)
+function isPrime($n, $i = 2)
 {
-   $prime = [2];
+    // Base cases
+    if ($n <= 2)
+        return ($n == 2) ? true : false;
+    if ($n % $i == 0)
+        return false;
+    if ($i * $i > $n)
+        return true;
 
-    for ($i = 2; $i <= $input; $i++)
-    {
-        foreach ($prime as $key => $val)
-        {
-                if ($i % $val === 0)
-                {
-                    break;
-                }
-                if (array_key_last($prime) === $key)
-                {
-                    $prime[] = $i;
-                }
-        }
-
-    }
-
-    return array_sum($prime);
+    // Check for next divisor
+    return isPrime($n, $i + 1);
 }
 
-echo efficientPrime(2_000_000);
+$primes = [];
+
+for ($i = 2; $i <= 2_000_000; $i++) {
+    if (isPrime($i)) {
+        $primes[] = $i;
+    }
+}
+var_dump($primes);
+
+//function efficientPrime($input)
+//{
+//   $prime = [2];
+//
+//    for ($i = 2; $i <= $input; $i++)
+//    {
+//        foreach ($prime as $key => $val)
+//        {
+//                if ($i % $val === 0)
+//                {
+//                    break;
+//                }
+//                if (array_key_last($prime) === $key)
+//                {
+//                    $prime[] = $i;
+//                }
+//        }
+//
+//    }
+//
+//    return array_sum($prime);
+//}
+//
+//echo efficientPrime(2_000_000);
 
 //function exhaustivePrime($input)
 //{
