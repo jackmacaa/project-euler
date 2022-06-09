@@ -1,38 +1,64 @@
 <?php
+//
+//The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+//
+//Find the sum of all the primes below two million
 
-function primeNumbers($input)
+function efficientPrime($input)
 {
-    $prime = [];
-    $count = 0;
+   $prime = [2];
 
-    for ($i = 1; $i <= $input; $i++)
+    for ($i = 2; $i <= $input; $i++)
     {
-        $counter = 0;
-        for ($j = 1; $j <= $i; $j++)
+        foreach ($prime as $key => $val)
         {
-            if($counter >2)
-            {
-                break;
-            }
-            if ($i % $j == 0)
-            {
-                $counter++;
-            }
+                if ($i % $val === 0)
+                {
+                    break;
+                }
+                if (array_key_last($prime) === $key)
+                {
+                    $prime[] = $i;
+                }
         }
 
-        if ($counter == 2)
-        {
-            $prime[] = $i; // store value to array
-        }
     }
-    foreach($prime as $val)
-    {
-        $count += $val;
-    }
-    return $count;
 
+    return array_sum($prime);
 }
-var_dump(primeNumbers(20000));
+
+echo efficientPrime(2_000_000);
+
+//function exhaustivePrime($input)
+//{
+//    $prime = [];
+//    $count = 0;
+//
+//    for ($i = 1; $i <= $input; $i++) {
+//        $counter = 0;
+//        for ($j = 1; $j <= $i; $j++) {
+//            if ($counter > 2) {
+//                break;
+//            }
+//            if ($i % $j == 0) {
+//                $counter++;
+//            }
+//        }
+//
+//        if ($counter == 2) {
+//            $prime[] = $i; // store value to array
+//        }
+//    }
+//
+//    foreach ($prime as $val) {
+//        $count += $val;
+//    }
+//    return $count;
+//}
+//
+//echo exhaustivePrime(10);
+
+//var_dump(primeNumbers(20000));
 //var_dump(max(primeNumbers(600851475143)));
 
 /*$top = 20000000;
